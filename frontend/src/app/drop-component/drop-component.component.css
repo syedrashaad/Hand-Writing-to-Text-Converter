@@ -1,0 +1,16 @@
+
+       /* #image-selection{
+        text-align:center;
+        padding:3%;
+        border:thin solid black;
+      } */
+
+      input{
+        display: none;
+      }
+      label{
+        cursor:pointer;
+      }
+      /* #imageName{
+        color:green;
+      } */

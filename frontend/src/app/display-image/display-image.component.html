@@ -1,0 +1,29 @@
+<div *ngIf="pdfUrl == '' && !loadingFlag" class="container d-flex flex-row flex-wrap mt-5">
+<div *ngFor="let file of filesAndUrls; index as i" class="card  m-2" style="width: 15rem;">
+    <img [src]=file.url width="200px" height="200px" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{file.file.name}}</h5>
+      <p class="card-text">Page {{i+1}}</p>
+      
+    </div> 
+     <div class="d-grid gap-2"> 
+        <button class="btn btn-small btn-danger m-2" type="button" (click)="onDeleteClick(i)"><i class="bi bi-trash"></i></button>
+      <!-- <button class="btn btn-block btn-small btn-danger"><i class="p-5 bi bi-trash"></i></button> -->
+    </div>  
+  </div>
+
+  
+</div>
+
+<div *ngIf="filesAndUrls.length != 0 && pdfUrl == '' && !loadingFlag" class="container d-grid gap-2"> 
+    <button style="background-color:#2364ae;color:white" class="btn btn-lg m-2" type="button" (click)="onServerPush()">Convert To Text &nbsp;<i class="bi bi-cloud-arrow-up-fill"></i></button>
+  </div>
+
+<div class="container d-grid gap-2" *ngIf="pdfUrl != '' && !loadingFlag">
+   <a style="background-color:#aad6b0;color:BLACK" class="btn btn-lg m-4" target="_blank" type="button" [href]="pdfUrl" (click)="onDownload()">Download Converted PDF <i class="bi bi-file-earmark-arrow-down-fill"></i></a>
+</div>
+
+<div *ngIf="loadingFlag" class="container m-4" style="text-align:center">
+<h3>Getting Your Text Ready...</h3> 
+<img src="../assets/loading.gif" height="150">
+</div>

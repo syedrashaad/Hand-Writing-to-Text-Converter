@@ -1,0 +1,30 @@
+<div *ngFor="let name of nonAllowedFiles;index as i" class="alert alert-danger alert-dismissible fade show m-2" role="alert">
+  <i class="bi bi-exclamation-triangle-fill"></i> <strong> &nbsp;{{name}}</strong> is not a jpeg or png or jpg file !!! &nbsp;&nbsp;
+  
+   <button class="btn btn-small btn-outline-danger" type="button" (click)="onAlertDismiss(i)">
+    <i class="bi bi-x-lg"></i>
+  </button>
+</div>
+
+<div class="mb-2" style="text-align:center">
+    <b style="color:#929ddc;font-size: larger;">{{greeting}}</b><img src="../assets/waving hand blue.gif" width="90px" height="90px">
+  <h5 style="font-family:littledays; font-size:x-large">Convert Hand Writing <img src="../assets/right arroe blue.gif" height="50"> <span style="font-family: 'Times New Roman', Times, serif;"> &nbsp;TEXT</span></h5>
+    <br>
+</div>
+<div  #droparea (drop)="onDropEvent($event)" (dragover)="onDragEvent(droparea,$event)" (dragleave)="onDragLeave($event)" class="container bg-light border border-secondary border-2 rounded" style="text-align:center">
+    <p class="mb-5 mt-5">Drag And Drop Your Images Here</p>
+    <p class="mb-5">OR</p>
+    
+    <div id="image-selection">
+        <label for="inputTag">
+         <button style="background-color:#e8c5cb" class="btn btn-lg mb-5 bg-gradient" (click)="onBrowseClick($event)"><i class="bi bi-camera-fill"></i> Browse Images</button>
+          <input #fileInput id="inputTag" type="file"
+          accept="image/png, image/jpeg, image/jpg"
+          (change)="uploadImage($event.target.files)"
+          multiple/>
+          <br/>
+          <!--<span id="imageName"></span>-->
+        </label>
+    </div>
+</div>
+<app-display-image></app-display-image>
